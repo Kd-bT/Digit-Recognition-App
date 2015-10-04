@@ -1,0 +1,14 @@
+<pre class="code">
+<span class="srcline"><span class="lineno"><a href="1,1" id="srcline1"> 1</a></span><span class="line"><span class="keyword">function</span> [ <span class="var type1" id="S2T5U3">p</span> ] = digit_nn_predict( <span class="var type1" id="S3T4U6">X</span> )</span></span>
+<span class="srcline"><span class="lineno"><a href="1,2" id="srcline2"> 2</a></span><span class="line"><span class="comment">%#codegen</span></span></span>
+<span class="srcline"><span class="lineno"><a href="1,3" id="srcline3"> 3</a></span><span class="line"></span></span>
+<span class="srcline"><span class="lineno"><a href="1,4" id="srcline4"> 4</a></span><span class="line"><span class="comment">%DIGIT_NN_PREDICT makes a prediction on what digit X represents</span></span></span>
+<span class="srcline"><span class="lineno"><a href="1,5" id="srcline5"> 5</a></span><span class="line"><span class="comment">%   Loads Thetas that have been precomputed from training</span></span></span>
+<span class="srcline"><span class="lineno"><a href="1,6" id="srcline6"> 6</a></span><span class="line"><span class="comment">%   and uses them to make a prediction on X.</span></span></span>
+<span class="srcline"><span class="lineno"><a href="1,7" id="srcline7"> 7</a></span><span class="line"></span></span>
+<span class="srcline"><span class="lineno"><a href="1,8" id="srcline8"> 8</a></span><span class="line"><span class="mxinfo " id="T1:U3"><span class="var type1" id="S4T1U9">Thetas</span> = <span class="mxinfo " id="T1:U5">coder.load(<span class="string">'digit_nn_thetas.mat'</span>)</span></span>;</span></span>
+<span class="srcline"><span class="lineno"><a href="1,9" id="srcline9"> 9</a></span><span class="line"><span class="mxinfo " id="T2:U6"><span class="var type1" id="S6T2U17">Theta1</span> = <span class="mxinfo " id="T2:U8"><span class="var type1" id="S4T1U19">Thetas</span>.Theta1</span></span>;</span></span>
+<span class="srcline"><span class="lineno"><a href="1,10" id="srcline10">10</a></span><span class="line"><span class="mxinfo " id="T3:U10"><span class="var type1" id="S7T3U23">Theta2</span> = <span class="mxinfo " id="T3:U12"><span class="var type1" id="S4T1U25">Thetas</span>.Theta2</span></span>;</span></span>
+<span class="srcline"><span class="lineno"><a href="1,11" id="srcline11">11</a></span><span class="line"><span class="mxinfo " id="T5:U14"><span class="var type1" id="S2T5U29">p</span> = <span class="mxinfo " id="T5:U16"><span class="fcn" id="F81N3:B31">predict</span>(<span class="mxinfo " id="T2:U17"><span class="var type1" id="S6T2U32">Theta1</span></span>, <span class="mxinfo " id="T3:U19"><span class="var type1" id="S7T3U33">Theta2</span></span>, <span class="var type1" id="S3T4U34">X</span>)</span></span>;</span></span>
+<span class="srcline"><span class="lineno"><a href="1,12" id="srcline12">12</a></span><span class="line"><span class="keyword">end</span></span></span>
+</pre>

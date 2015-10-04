@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src = "js.js"></script>
+</head>
+<body>
+	<!-- style="position:absolute; top:0; left:0; z-index:0; border:4px solid #d3d3d3;" -->
+	<!-- border:4px solid #d3d3d3; -->
+	<canvas id="digitCanvas" width="560" height="560" style="position:absolute; top:0; left:0; z-index:0;">
+	Your browser does not support the HTML5 canvas tag.</canvas>
+	<canvas id="outerCanvas" width="560" height="560" style="position:absolute; top:0; left:0; z-index:1;"></canvas>
+
+	<button type="button" onclick="resetCanvas();" style="position:absolute; top:600px; left:0; z-index:0; border:4px solid #d3d3d3;">Reset canvas</button>
+	<button type="button" onclick="shrinkDownImage();" style="position:absolute; top:600px; left:300px; z-index:0; border:4px solid #d3d3d3;">Predict</button>
+</body>
+</html>

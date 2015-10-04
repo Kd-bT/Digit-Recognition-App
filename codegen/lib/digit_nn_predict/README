@@ -1,0 +1,5 @@
+Commands to run program:
+
+gcc -o main.o -c main.c
+gcc -o program main.o digit_nn_predict.o digit_nn_predict_initialize.o digit_nn_predict_terminate.o rtGetInf.o rtGetNaN.o rt_nonfinite.o -lm
+./program
