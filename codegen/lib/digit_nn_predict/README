@@ -1,5 +1,9 @@
 Commands to run program:
 
-gcc -o main.o -c main.c
-gcc -o program main.o digit_nn_predict.o digit_nn_predict_initialize.o digit_nn_predict_terminate.o rtGetInf.o rtGetNaN.o rt_nonfinite.o -lm
+gcc -o main.o -c main.c -I/home/kevin/Programming/Digit\ Recognition\ Web\ App\ Libraries/libwebsockets/lib -I/home/kevin/Programming/Digit\ Recognition\ Web\ App\ Libraries/libwebsockets/build/
+gcc -o program -I/home/kevin/Programming/Digit\ Recognition\ Web\ App\ Libraries/libwebsockets/lib -I/home/kevin/Programming/Digit\ Recognition\ Web\ App\ Libraries/libwebsockets/build main.o digit_nn_predict.o digit_nn_predict_initialize.o digit_nn_predict_terminate.o rtGetInf.o rtGetNaN.o rt_nonfinite.o -lm -lwebsockets -L/home/kevin/Programming/Digit\ Recognition\ Web\ App\ Libraries/libwebsockets/build/lib
 ./program
+
+
+If libwebsockets changes, run in ~libwebsockets/build:
+sudo make install && sudo cp /usr/local/lib/libwebsocket.so /usr/local/lib/libwebsocket.so.5 /usr/lib

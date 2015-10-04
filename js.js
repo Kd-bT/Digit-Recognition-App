@@ -14,6 +14,9 @@ var mousePos;
 var mouseDown = false;
 var userPen;
 
+// Websocket
+var websocket = new WebSocket('ws://localhost:9000', 'predict-protocol');
+
 function startDigitRecognition() {
 
 	// Create black background for canvas
@@ -118,7 +121,7 @@ function resetCanvas() {
 	ctx.fillRect(0,0,imageLength*scale,imageLength*scale);
 }
 
-function shrinkDownImage() {
+function predict() {
 	var imageData = ctx.getImageData(0, 0, imageLength*scale, imageLength*scale);
 	var data = imageData.data;
 	var processedData = Array.apply(null, Array(imageLength*imageLength)).map(Number.prototype.valueOf,0);
@@ -140,6 +143,8 @@ function shrinkDownImage() {
 	}
 	ctx.putImageData(imageData, 0, 0);
 	
+    var json = JSON.stringify(processedData);
+    websocket.send(json);
 }
 
 window.onload = startDigitRecognition;
