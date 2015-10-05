@@ -41,6 +41,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <libwebsockets.h>
 
 /* Function Declarations */
@@ -143,8 +144,27 @@ static int callback_predict(struct libwebsocket_context * this,
            
             // release memory back into the wild
             free(buf);*/
+            
+            printf("received data: %s\n", (char *) in);
 
-            double p = 5.0000;
+            // Make prediction through neural network
+            digit_nn_predict_initialize();
+            double data[784];
+
+            char* token = strtok((char*) in, "[,]");
+            int pixel = 0;
+            while (token) {
+              data[pixel] = atof(token);
+              token = strtok(0, "[,]");
+              pixel++;
+            }
+
+            double p = digit_nn_predict(data);
+
+            digit_nn_predict_terminate();
+            
+
+            // Send prediction to JS
             if (p == 10)
             {
               p = 0;
