@@ -15,7 +15,7 @@ var mouseDown = false;
 var userPen;
 
 // Websocket
-var websocket = new WebSocket('ws://localhost:9000', 'predict-protocol');
+var websocket
 
 function startDigitRecognition() {
 
@@ -65,6 +65,12 @@ function startDigitRecognition() {
         mouseUp(evt);
         evt.preventDefault();
     });
+
+    // Setup websocket
+    websocket = new WebSocket('ws://localhost:9000', 'predict-protocol');
+    websocket.onmessage = function (message) {
+                    console.log(message.data);
+        };
 }
 
 function getMousePos(canvas, evt) {

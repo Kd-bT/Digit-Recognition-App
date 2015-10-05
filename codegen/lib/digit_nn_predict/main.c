@@ -116,7 +116,7 @@ static int callback_predict(struct libwebsocket_context * this,
             // it has to have some pre and post padding. You don't need to care
             // what comes there, libwebsockets will do everything for you. For more info see
             // http://git.warmcat.com/cgi-bin/cgit/libwebsockets/tree/lib/libwebsockets.h#n597
-            unsigned char *buf = (unsigned char*) malloc(LWS_SEND_BUFFER_PRE_PADDING + len +
+            /*unsigned char *buf = (unsigned char*) malloc(LWS_SEND_BUFFER_PRE_PADDING + len +
                                                          LWS_SEND_BUFFER_POST_PADDING);
            
             int i;
@@ -133,7 +133,7 @@ static int callback_predict(struct libwebsocket_context * this,
             // http://stackoverflow.com/questions/5189071/print-part-of-char-array
             printf("received data: %s, replying: %.*s\n", (char *) in, (int) len,
                  buf + LWS_SEND_BUFFER_PRE_PADDING);
-           
+
             // send response
             // just notice that we have to tell where exactly our response starts. That's
             // why there's `buf[LWS_SEND_BUFFER_PRE_PADDING]` and how long it is.
@@ -142,6 +142,28 @@ static int callback_predict(struct libwebsocket_context * this,
             libwebsocket_write(wsi, &buf[LWS_SEND_BUFFER_PRE_PADDING], len, LWS_WRITE_TEXT);
            
             // release memory back into the wild
+            free(buf);*/
+
+            double p = 5.0000;
+            if (p == 10)
+            {
+              p = 0;
+            }
+
+            char count[2];
+            snprintf(count,2,"%f",p);
+            
+            int len = (int) strlen(count);
+            unsigned char *buf = (unsigned char*) malloc(LWS_SEND_BUFFER_PRE_PADDING + len +
+                                                         LWS_SEND_BUFFER_POST_PADDING);
+            
+            int i;
+            for (i=0; i < len; i++) {
+                buf[LWS_SEND_BUFFER_PRE_PADDING + i ] = count[i];
+            }
+
+            libwebsocket_write(wsi, &buf[LWS_SEND_BUFFER_PRE_PADDING], len, LWS_WRITE_TEXT);
+
             free(buf);
             break;
         }
